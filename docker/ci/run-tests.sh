@@ -2,5 +2,5 @@
 set -e
 
 cd /source
-make install
+make install-all
 make test
