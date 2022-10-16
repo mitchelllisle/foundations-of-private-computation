@@ -45,7 +45,7 @@ class ShiftCipher:
 
         if letter != ' ':
             letter_idx = ord(letter.lower()) - 97
-            return self.keyspace[letter_idx - 3]
+            return self.keyspace[letter_idx - self.shift]
         return letter
 
     def encrypt(self, plaintext: str) -> str:
@@ -53,7 +53,5 @@ class ShiftCipher:
         return ''.join(ciphertext)
 
     def decrypt(self, ciphertext: str) -> str:
-        plaintext = list(
-            ciphertext.lower().strip().replace('\n', '') | map(lambda letter: self._unshift_letter(letter))
-        )
+        plaintext = list(ciphertext.lower().strip().replace('\n', '') | map(self._unshift_letter))
         return ''.join(plaintext)
