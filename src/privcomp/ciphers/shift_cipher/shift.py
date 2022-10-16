@@ -21,31 +21,39 @@ class ShiftCipher:
 
     def __init__(self, shift: int = 3):
         self.shift = shift
-        self.alphabet: str = string.ascii_lowercase
-        self._shifted_alphabet: str = self._shift_alphabet()
+        self.keyspace: str = string.ascii_lowercase
+        self._shifted_keyspace: str = self._shift_alphabet()
 
     def _shift_alphabet(self):
-        return self.alphabet[self.shift :] + self.alphabet[: self.shift]
+        return self.keyspace[self.shift :] + self.keyspace[: self.shift]
+
+    def _letter_validation(self, letter: str) -> str:
+        if letter.lower() not in f'{self.keyspace} ':
+            raise ValueError(f'letter can only be 1 character length and must be in alphabet. Problem letter: {letter}')
+        return letter.lower()
 
     def _shift_letter(self, letter: str) -> str:
-        if letter.lower() not in f'{self.alphabet} ':
-            raise ValueError('letter can only be 1 character length and must be in alphabet')
+        letter = self._letter_validation(letter)
 
         if letter != ' ':
             letter_idx = ord(letter.lower()) - 97
-            return self._shifted_alphabet[letter_idx]
+            return self._shifted_keyspace[letter_idx]
         return letter
 
     def _unshift_letter(self, letter: str) -> str:
+        letter = self._letter_validation(letter)
+
         if letter != ' ':
-            letter_idx = ord(letter.lower()) - 97 - 3
-            return self.alphabet[letter_idx]
+            letter_idx = ord(letter.lower()) - 97
+            return self.keyspace[letter_idx - 3]
         return letter
 
     def encrypt(self, plaintext: str) -> str:
-        ciphertext = list(plaintext | map(self._shift_letter))
+        ciphertext = list(plaintext.lower().strip().replace('\n', '') | map(self._shift_letter))
         return ''.join(ciphertext)
 
     def decrypt(self, ciphertext: str) -> str:
-        plaintext = list(ciphertext | map(lambda letter: self._unshift_letter(letter)))
+        plaintext = list(
+            ciphertext.lower().strip().replace('\n', '') | map(lambda letter: self._unshift_letter(letter))
+        )
         return ''.join(plaintext)

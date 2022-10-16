@@ -1,7 +1,9 @@
-from privcomp.ciphers.shift_cipher.shift import ShiftCipher
+from privcomp import ShiftCipher, ShiftCipherAttack
 
 if __name__ == '__main__':
-    ciphter = ShiftCipher()
-    ciphertext = ciphter.encrypt('hello world')
-    plaintext = ciphter.decrypt(ciphertext)
-    pass
+    shift_cipher = ShiftCipher(shift=3)
+    ciphertext = shift_cipher.encrypt('ax hello world')
+    plaintext = shift_cipher.decrypt(ciphertext)
+
+    shift_cipher_attack = ShiftCipherAttack(ciphertext)
+    shift_cipher_attack.run()
