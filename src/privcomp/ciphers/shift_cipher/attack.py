@@ -1,4 +1,4 @@
-from privcomp.ciphers.shift_cipher.shift import ShiftCipher
+from privcomp.ciphers.shift_cipher.cipher import ShiftCipher
 from privcomp.logger import logger
 
 

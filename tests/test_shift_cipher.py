@@ -14,8 +14,8 @@ def test_encrypt(shift_cipher, plaintext):
     assert encrypted != plaintext
 
 
-def test_decrypt(shift_cipher, plaintext, ciphertext):
-    decrypted = shift_cipher.decrypt(ciphertext)
+def test_decrypt(shift_cipher, plaintext, shift_cipher_text):
+    decrypted = shift_cipher.decrypt(shift_cipher_text)
     assert plaintext.strip().replace('\n', '') == decrypted
 
 

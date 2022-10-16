@@ -1,11 +1,12 @@
-Name                                            Stmts   Miss  Cover
--------------------------------------------------------------------
-src/privcomp/__init__.py                            5      0   100%
-src/privcomp/__main__.py                            7      7     0%
-src/privcomp/ciphers/__init__.py                    0      0   100%
-src/privcomp/ciphers/shift_cipher/__init__.py       0      0   100%
-src/privcomp/ciphers/shift_cipher/attack.py        10      5    50%
-src/privcomp/ciphers/shift_cipher/shift.py         31      1    97%
-src/privcomp/logger.py                              4      0   100%
--------------------------------------------------------------------
-TOTAL                                              57     13    77%
+Name                                                      Stmts   Miss  Cover
+-----------------------------------------------------------------------------
+src/privcomp/__init__.py                                      6      0   100%
+src/privcomp/ciphers/__init__.py                              0      0   100%
+src/privcomp/ciphers/mono_alphabetic_chiper/__init__.py       0      0   100%
+src/privcomp/ciphers/mono_alphabetic_chiper/cipher.py        35      1    97%
+src/privcomp/ciphers/shift_cipher/__init__.py                 0      0   100%
+src/privcomp/ciphers/shift_cipher/attack.py                  10      5    50%
+src/privcomp/ciphers/shift_cipher/cipher.py                  31      1    97%
+src/privcomp/logger.py                                        4      0   100%
+-----------------------------------------------------------------------------
+TOTAL                                                        86      7    92%
