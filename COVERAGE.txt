@@ -5,8 +5,8 @@ src/privcomp/ciphers/__init__.py                              0      0   100%
 src/privcomp/ciphers/mono_alphabetic_chiper/__init__.py       0      0   100%
 src/privcomp/ciphers/mono_alphabetic_chiper/cipher.py        35      1    97%
 src/privcomp/ciphers/shift_cipher/__init__.py                 0      0   100%
-src/privcomp/ciphers/shift_cipher/attack.py                  10      5    50%
+src/privcomp/ciphers/shift_cipher/attack.py                  11      0   100%
 src/privcomp/ciphers/shift_cipher/cipher.py                  31      1    97%
-src/privcomp/logger.py                                        4      0   100%
+src/privcomp/logger.py                                        4      4     0%
 -----------------------------------------------------------------------------
-TOTAL                                                        86      7    92%
+TOTAL                                                        87      6    93%

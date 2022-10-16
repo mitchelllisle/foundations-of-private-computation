@@ -1,6 +1,6 @@
 import pytest
 
-from privcomp import MonoAlphabeticCipher, ShiftCipher
+from privcomp import MonoAlphabeticCipher, ShiftCipher, ShiftCipherAttack
 
 
 @pytest.fixture
@@ -10,14 +10,20 @@ def shift_cipher() -> ShiftCipher:
 
 
 @pytest.fixture
-def plaintext() -> str:
+def shift_cipher_attack(shift_cipher_text) -> ShiftCipherAttack:
+    sc = ShiftCipherAttack(shift_cipher_text)
+    return sc
+
+
+@pytest.fixture
+def shift_cipher_plaintext() -> str:
     djo_lyrics = """
     I need to walk my dog Im ready to go
     My dogs expecting me Im ready to go
     I hate this temperature Im ready to go
     This music sucks to me Im ready to go
     """
-    return djo_lyrics.lower()
+    return djo_lyrics.lower().strip().replace('\n', '')
 
 
 @pytest.fixture

@@ -1,5 +1,4 @@
 from privcomp.ciphers.shift_cipher.cipher import ShiftCipher
-from privcomp.logger import logger
 
 
 class ShiftCipherAttack:
@@ -7,7 +6,9 @@ class ShiftCipherAttack:
         self.ciphertext: str = ciphertext
         self.attack_space: range = range(26)
 
-    def run(self):
+    def run(self) -> list[str]:
+        plaintexts = []
         for shift in self.attack_space:
             shift_cipher = ShiftCipher(shift)
-            logger.info(shift_cipher.decrypt(self.ciphertext))
+            plaintexts.append(shift_cipher.decrypt(self.ciphertext))
+        return plaintexts
