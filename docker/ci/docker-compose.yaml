@@ -2,7 +2,7 @@ version: '3'
 
 services:
   privcomp:
-    image: themattrix/tox
+    image: python3.10
     volumes:
       - ../../:/source
     env_file:
