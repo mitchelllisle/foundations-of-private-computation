@@ -5,6 +5,19 @@ from privcomp.text_utils import starmap
 
 
 class VigenereCipher(AbstractCipher):
+    """Vigenère Cipher
+    Let's go for an even more difficult cipher to crack, the Vigenère cipher.
+    The first difficulty of the Vigenere cipher is that the length of the key is arbitrary and indicates the permutation
+    of the text.
+    Our plaintext is `ddddd` and we encrypt it using the key  of length 3. It is easy to see how it works. The first
+    letter of the plaintext is shifted  (shift of 0), the second shifted  (shift of 1 position) and the third one by
+    (shift of 3 positions).
+
+    We've chosen as key a random chain of size 3, this is esz. Again, e is shifted (4 positions), r shifted
+    (9 positions) and  shifted by  (7 positions). Then, the next character  is shifted by the first letter of the key,
+    this results.
+    """
+
     def __init__(self, key: str = 'jsf'):
         self.key = key
         self.key_length = len(self.key)
