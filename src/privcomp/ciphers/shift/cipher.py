@@ -1,5 +1,3 @@
-import string
-
 from pipe import map
 
 from privcomp.ciphers.cipher import AbstractCipher
@@ -23,7 +21,6 @@ class ShiftCipher(AbstractCipher):
 
     def __init__(self, shift: int = 3):
         self.shift = shift
-        self.keyspace: str = string.ascii_lowercase
         self._shifted_keyspace: str = self._shift_alphabet()
 
     def _shift_alphabet(self):

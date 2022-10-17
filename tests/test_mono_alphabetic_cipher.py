@@ -9,7 +9,7 @@ def test_generate(mono_alphabetic_cipher):
 
 
 def test_mono_alphabetic_cipher(mono_alphabetic_cipher):
-    assert len(mono_alphabetic_cipher.keyspace) == 26
+    assert len(mono_alphabetic_cipher.secret_key) == 26
 
 
 def test_mono_alphabetic_encrypt(mono_alphabetic_cipher, plaintext):
@@ -25,11 +25,11 @@ def test_mono_alphabetic_decrypt(mono_alphabetic_cipher, plaintext, mono_alphabe
 def test_shift_letter(mono_alphabetic_cipher):
     for idx, letter in enumerate(string.ascii_lowercase):
         shifted = mono_alphabetic_cipher._shift_letter(letter)
-        assert shifted == mono_alphabetic_cipher.keyspace[idx]
+        assert shifted == mono_alphabetic_cipher.secret_key[idx]
 
 
 def test_unshift_letter(mono_alphabetic_cipher):
     alphabet_lookup = dict(zip(string.ascii_lowercase, range(len(string.ascii_lowercase))))
     for letter in string.ascii_lowercase:
         shifted = mono_alphabetic_cipher._unshift_letter(letter)
-        assert mono_alphabetic_cipher.keyspace[alphabet_lookup[shifted]] == letter
+        assert mono_alphabetic_cipher.secret_key[alphabet_lookup[shifted]] == letter

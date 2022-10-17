@@ -42,7 +42,7 @@ class MonoAlphabeticCipherAttack:
 
     def calculate_accuracy(self, derived_keyspace: str) -> float:
         correct, incorrect = 0, 0
-        for real, derived in zip(self.mc.keyspace, derived_keyspace):
+        for real, derived in zip(self.mc.secret_key, derived_keyspace):
             if real == derived:
                 correct += 1
             else:

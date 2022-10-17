@@ -1,17 +1,14 @@
 import string
-from random import SystemRandom
 
 from pipe import map
 
+from privcomp.ciphers.cipher import AbstractCipher
 
-class MonoAlphabeticCipher:
 
-    random = SystemRandom()
-
-    def __init__(self, keyspace: str = 'xtkcndbjipyvmfeslagourwqhz'):
-        self.keyspace = keyspace
-        self._keyspace_lookup = dict(zip(self.keyspace, range(len(self.keyspace))))
-        self.alphabet = string.ascii_lowercase
+class MonoAlphabeticCipher(AbstractCipher):
+    def __init__(self, secret_key: str = 'xtkcndbjipyvmfeslagourwqhz'):
+        self.secret_key = secret_key
+        self._secret_key_lookup = dict(zip(self.secret_key, range(len(self.secret_key))))
 
     @classmethod
     def generate(cls) -> str:
@@ -20,7 +17,7 @@ class MonoAlphabeticCipher:
         return ''.join(keyspace)
 
     def _letter_validation(self, letter: str) -> str:
-        if letter.lower() not in f'{self.keyspace} ':
+        if letter.lower() not in f'{self.secret_key} ':
             raise ValueError(f'letter can only be 1 character length and must be in alphabet. Problem letter: {letter}')
         return letter.lower()
 
@@ -28,13 +25,13 @@ class MonoAlphabeticCipher:
         letter = self._letter_validation(letter)
         if letter != ' ':
             letter_idx = ord(letter.lower()) - 97
-            return self.keyspace[letter_idx]
+            return self.secret_key[letter_idx]
         return letter
 
     def _unshift_letter(self, letter: str) -> str:
         letter = self._letter_validation(letter)
         if letter != ' ':
-            return self.alphabet[self._keyspace_lookup[letter]]
+            return self.keyspace[self._secret_key_lookup[letter]]
         return letter
 
     def encrypt(self, plaintext: str) -> str:
