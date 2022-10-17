@@ -3,7 +3,7 @@ import string
 import pytest
 
 from privcomp.ciphers.cipher import AbstractCipher
-from privcomp.text_utils import letter_count
+from privcomp.text_utils import letter_count, letter_to_int
 
 
 def test_clean_text():
@@ -19,3 +19,8 @@ def test_clean_text():
 def test_letter_count(case):
     count = letter_count(case[0])
     assert [x[1] for x in count] == case[1]
+
+
+def test_letter_to_int():
+    for index, letter in enumerate(string.ascii_lowercase):
+        assert letter_to_int(letter) == index

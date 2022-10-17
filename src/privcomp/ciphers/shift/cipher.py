@@ -1,6 +1,7 @@
 from pipe import map
 
 from privcomp.ciphers.cipher import AbstractCipher
+from privcomp.text_utils import letter_to_int
 
 
 class ShiftCipher(AbstractCipher):
@@ -30,7 +31,7 @@ class ShiftCipher(AbstractCipher):
         letter = self._letter_validation(letter)
 
         if letter != ' ':
-            letter_idx = ord(letter.lower()) - 97
+            letter_idx = letter_to_int(letter.lower())
             return self._shifted_keyspace[letter_idx]
         return letter
 
@@ -38,7 +39,7 @@ class ShiftCipher(AbstractCipher):
         letter = self._letter_validation(letter)
 
         if letter != ' ':
-            letter_idx = ord(letter.lower()) - 97
+            letter_idx = letter_to_int(letter.lower())
             return self.keyspace[letter_idx - self.shift]
         return letter
 

@@ -5,13 +5,13 @@ src/privcomp/ciphers/__init__.py                       0      0   100%
 src/privcomp/ciphers/cipher.py                        24      3    88%
 src/privcomp/ciphers/mono_alphabetic/__init__.py       0      0   100%
 src/privcomp/ciphers/mono_alphabetic/attack.py        29     21    28%
-src/privcomp/ciphers/mono_alphabetic/cipher.py        33      1    97%
+src/privcomp/ciphers/mono_alphabetic/cipher.py        34      1    97%
 src/privcomp/ciphers/shift/__init__.py                 0      0   100%
 src/privcomp/ciphers/shift/attack.py                  12      0   100%
-src/privcomp/ciphers/shift/cipher.py                  28      0   100%
+src/privcomp/ciphers/shift/cipher.py                  29      0   100%
 src/privcomp/ciphers/vigenere/__init__.py              0      0   100%
 src/privcomp/ciphers/vigenere/cipher.py               36      0   100%
 src/privcomp/logger.py                                 4      4     0%
-src/privcomp/text_utils.py                             8      0   100%
+src/privcomp/text_utils.py                            10      0   100%
 ----------------------------------------------------------------------
-TOTAL                                                182     29    84%
+TOTAL                                                186     29    84%

@@ -3,6 +3,7 @@ import string
 from pipe import map
 
 from privcomp.ciphers.cipher import AbstractCipher
+from privcomp.text_utils import letter_to_int
 
 
 class MonoAlphabeticCipher(AbstractCipher):
@@ -32,7 +33,7 @@ class MonoAlphabeticCipher(AbstractCipher):
     def _shift_letter(self, letter: str) -> str:
         letter = self._letter_validation(letter)
         if letter != ' ':
-            letter_idx = ord(letter.lower()) - 97
+            letter_idx = letter_to_int(letter.lower())
             return self.secret_key[letter_idx]
         return letter
 

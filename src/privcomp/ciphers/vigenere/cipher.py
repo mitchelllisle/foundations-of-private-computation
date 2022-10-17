@@ -1,7 +1,7 @@
 from typing import Set
 
 from privcomp.ciphers.cipher import AbstractCipher
-from privcomp.text_utils import starmap
+from privcomp.text_utils import letter_to_int, starmap
 
 
 class VigenereCipher(AbstractCipher):
@@ -25,16 +25,16 @@ class VigenereCipher(AbstractCipher):
     def _shift_letter(self, shift_by: int, letter: str) -> str:
         letter = self._letter_validation(letter)
         if letter != ' ':
-            idx = ord(letter) - 97
-            shift_idx = ord(self.key[shift_by % self.key_length]) - 97
+            idx = letter_to_int(letter)
+            shift_idx = letter_to_int(self.key[shift_by % self.key_length])
             return self.keyspace[(idx + shift_idx) % self.keyspace_size]
         return letter
 
     def _unshift_letter(self, shift_by: int, letter: str) -> str:
         letter = self._letter_validation(letter)
         if letter != ' ':
-            idx = ord(letter) - 97
-            shift_idx = ord(self.key[shift_by % self.key_length]) - 97
+            idx = letter_to_int(letter)
+            shift_idx = letter_to_int(self.key[shift_by % self.key_length])
             return self.keyspace[(idx - shift_idx) % self.keyspace_size]
         return letter
 
