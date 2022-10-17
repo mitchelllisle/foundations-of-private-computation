@@ -1,8 +1,7 @@
+import re
 import string
 from abc import ABC, abstractmethod
 from random import SystemRandom
-
-from pipe import filter
 
 
 class AbstractCipher(ABC):
@@ -17,11 +16,10 @@ class AbstractCipher(ABC):
 
     @staticmethod
     def clean_text(text: str) -> str:
-        words = text.lower().replace('\n', '').strip().split()
-        processed = list(
-            words | filter(lambda word: all([True if letter in string.ascii_lowercase else False for letter in word]))
-        )
-        return ' '.join(processed)
+        text = text.lower().replace('\n', '').strip()
+        text = re.sub(rf'[{string.punctuation}]', '', text)
+        text = re.sub(r'\s{2,}', ' ', text)
+        return text
 
     @abstractmethod
     def encrypt(self, plaintext: str) -> str:
