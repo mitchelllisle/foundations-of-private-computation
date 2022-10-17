@@ -1,4 +1,4 @@
-##  🔐🔑Foundation of private computation
+##  🔐 Foundations of private computation
 
 > 1️⃣ version: 0.2.0
 
