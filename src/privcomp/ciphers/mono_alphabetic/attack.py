@@ -1,7 +1,7 @@
 import string
 from typing import Dict, Tuple
 
-from privcomp.ciphers.mono_alphabetic_chiper.cipher import MonoAlphabeticCipher
+from privcomp.ciphers.mono_alphabetic.cipher import MonoAlphabeticCipher
 from privcomp.text_utils import letter_count
 
 

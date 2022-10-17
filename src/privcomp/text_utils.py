@@ -1,15 +1,12 @@
-import string
 from typing import List, Tuple
 
-from pipe import filter, groupby, map, sort
+from pipe import Pipe, filter, groupby, map, sort
 
 
-def clean_text(text: str) -> str:
-    words = text.split()
-    processed = list(
-        words | filter(lambda word: all([True if letter in string.ascii_lowercase else False for letter in word]))
-    )
-    return ' '.join(processed)
+@Pipe
+def starmap(iterable, selector):
+    for element in iterable:
+        yield selector(*element)
 
 
 def letter_count(text: str) -> List[Tuple[str, int]]:

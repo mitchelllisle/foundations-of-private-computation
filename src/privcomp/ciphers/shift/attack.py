@@ -1,6 +1,6 @@
 from typing import List
 
-from privcomp.ciphers.shift_cipher.cipher import ShiftCipher
+from privcomp.ciphers.shift.cipher import ShiftCipher
 
 
 class ShiftCipherAttack:
