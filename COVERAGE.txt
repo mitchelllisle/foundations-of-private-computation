@@ -12,6 +12,6 @@ src/privcomp/ciphers/shift/cipher.py                  28      0   100%
 src/privcomp/ciphers/vigenere/__init__.py              0      0   100%
 src/privcomp/ciphers/vigenere/cipher.py               36      0   100%
 src/privcomp/logger.py                                 4      4     0%
-src/privcomp/text_utils.py                             8      1    88%
+src/privcomp/text_utils.py                             8      0   100%
 ----------------------------------------------------------------------
-TOTAL                                                182     30    84%
+TOTAL                                                182     29    84%
