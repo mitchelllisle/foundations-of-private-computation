@@ -1,7 +1,10 @@
-##  privatecompute
+##  🔐🔑Foundation of private computation
 
 > 1️⃣ version: 0.2.0
 
 > ✍️ author: Mitchell Lisle
 
-My project
+This is code from following along doing the [Open Mined - Foundation of private computation](https://courses.openmined.org/courses/foundations-of-private-computation)
+course.
+
+The course notebooks can be found [here](https://github.com/OpenMined/courses/tree/foundations-of-private-computation).
