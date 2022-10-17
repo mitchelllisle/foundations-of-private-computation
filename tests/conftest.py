@@ -1,6 +1,7 @@
 import pytest
 
-from privcomp import MonoAlphabeticCipher, ShiftCipher, ShiftCipherAttack
+from privcomp import MonoAlphabeticCipher, ShiftCipher, ShiftCipherAttack, VigenereCipher
+from privcomp.ciphers.cipher import AbstractCipher
 
 
 @pytest.fixture
@@ -10,20 +11,26 @@ def shift_cipher() -> ShiftCipher:
 
 
 @pytest.fixture
+def vigenere_cipher() -> VigenereCipher:
+    c = VigenereCipher()
+    return c
+
+
+@pytest.fixture
 def shift_cipher_attack(shift_cipher_text) -> ShiftCipherAttack:
     sc = ShiftCipherAttack(shift_cipher_text)
     return sc
 
 
 @pytest.fixture
-def shift_cipher_plaintext() -> str:
+def plaintext() -> str:
     djo_lyrics = """
     I need to walk my dog Im ready to go
     My dogs expecting me Im ready to go
     I hate this temperature Im ready to go
     This music sucks to me Im ready to go
     """
-    return djo_lyrics.lower().strip().replace('\n', '')
+    return AbstractCipher.clean_text(djo_lyrics)
 
 
 @pytest.fixture
@@ -34,7 +41,7 @@ def shift_cipher_text() -> str:
     l kdwh wklv whpshudwxuh lp uhdgb wr jr
     wklv pxvlf vxfnv wr ph lp uhdgb wr jr
     """
-    return cipher
+    return AbstractCipher.clean_text(cipher)
 
 
 @pytest.fixture
@@ -45,7 +52,18 @@ def mono_alphabetic_cipher_text() -> str:
     i jxon ojig onmsnaxouan im anxch oe be
     ojig mugik gukyg oe mn im anxch oe be
     """
-    return cipher
+    return AbstractCipher.clean_text(cipher)
+
+
+@pytest.fixture
+def vigenere_cipher_text() -> str:
+    cipher = """
+    r snwi lt ofuc vq mgl ar jjjvd lt yt
+    ed vtpk npunuyrfl ej ar jjjvd lt yt
+    a qsyn yqax ljvhjasydjj ar jjjvd lt yt 
+    lmrk vmxru bmhtk cg vw re awfmq cg pg
+    """
+    return AbstractCipher.clean_text(cipher)
 
 
 @pytest.fixture
