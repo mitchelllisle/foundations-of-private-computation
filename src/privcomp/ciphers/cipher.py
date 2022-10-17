@@ -17,7 +17,7 @@ class AbstractCipher(ABC):
 
     @staticmethod
     def clean_text(text: str) -> str:
-        words = text.lower().strip().split()
+        words = text.lower().replace('\n', '').strip().split()
         processed = list(
             words | filter(lambda word: all([True if letter in string.ascii_lowercase else False for letter in word]))
         )

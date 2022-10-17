@@ -2,8 +2,10 @@ import string
 
 from pipe import map
 
+from privcomp.ciphers.cipher import AbstractCipher
 
-class ShiftCipher:
+
+class ShiftCipher(AbstractCipher):
     """Shift Cipher
     One of the oldest known ciphers is the Shift cipher. In this cipher we encrypt the alphabet by shifting a certain
     number of places the letters of our message. Julius Caesar used the Shift cipher to communicate secretly with his
@@ -27,11 +29,6 @@ class ShiftCipher:
     def _shift_alphabet(self):
         return self.keyspace[self.shift :] + self.keyspace[: self.shift]
 
-    def _letter_validation(self, letter: str) -> str:
-        if letter.lower() not in f'{self.keyspace} ':
-            raise ValueError(f'letter can only be 1 character length and must be in alphabet. Problem letter: {letter}')
-        return letter.lower()
-
     def _shift_letter(self, letter: str) -> str:
         letter = self._letter_validation(letter)
 
@@ -49,9 +46,11 @@ class ShiftCipher:
         return letter
 
     def encrypt(self, plaintext: str) -> str:
-        ciphertext = list(plaintext.lower().strip().replace('\n', '') | map(self._shift_letter))
+        cleaned = self.clean_text(plaintext)
+        ciphertext = list(cleaned | map(self._shift_letter))
         return ''.join(ciphertext)
 
     def decrypt(self, ciphertext: str) -> str:
-        plaintext = list(ciphertext.lower().strip().replace('\n', '') | map(self._unshift_letter))
+        cleaned = self.clean_text(ciphertext)
+        plaintext = list(cleaned | map(self._unshift_letter))
         return ''.join(plaintext)

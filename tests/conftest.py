@@ -1,6 +1,7 @@
 import pytest
 
 from privcomp import MonoAlphabeticCipher, ShiftCipher, ShiftCipherAttack, VigenereCipher
+from privcomp.ciphers.cipher import AbstractCipher
 
 
 @pytest.fixture
@@ -29,7 +30,7 @@ def plaintext() -> str:
     I hate this temperature Im ready to go
     This music sucks to me Im ready to go
     """
-    return djo_lyrics.lower().strip().replace('\n', '')
+    return AbstractCipher.clean_text(djo_lyrics)
 
 
 @pytest.fixture
@@ -40,7 +41,7 @@ def shift_cipher_text() -> str:
     l kdwh wklv whpshudwxuh lp uhdgb wr jr
     wklv pxvlf vxfnv wr ph lp uhdgb wr jr
     """
-    return cipher
+    return AbstractCipher.clean_text(cipher)
 
 
 @pytest.fixture
@@ -51,7 +52,7 @@ def mono_alphabetic_cipher_text() -> str:
     i jxon ojig onmsnaxouan im anxch oe be
     ojig mugik gukyg oe mn im anxch oe be
     """
-    return cipher
+    return AbstractCipher.clean_text(cipher)
 
 
 @pytest.fixture
@@ -62,7 +63,7 @@ def vigenere_cipher_text() -> str:
     a qsyn yqax ljvhjasydjj ar jjjvd lt yt 
     lmrk vmxru bmhtk cg vw re awfmq cg pg
     """
-    return cipher
+    return AbstractCipher.clean_text(cipher)
 
 
 @pytest.fixture
