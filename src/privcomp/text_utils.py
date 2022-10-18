@@ -1,6 +1,9 @@
+from random import SystemRandom
 from typing import List, Tuple
 
 from pipe import Pipe, filter, groupby, map, sort
+
+random = SystemRandom()
 
 
 @Pipe

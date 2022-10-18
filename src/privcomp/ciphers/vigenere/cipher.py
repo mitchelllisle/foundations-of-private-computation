@@ -2,6 +2,7 @@ from typing import Set
 
 from privcomp.ciphers.cipher import AbstractCipher
 from privcomp.text_utils import letter_to_int, starmap
+from privcomp.types import CipherText, PlainText
 
 
 class VigenereCipher(AbstractCipher):
@@ -9,7 +10,7 @@ class VigenereCipher(AbstractCipher):
     Let's go for an even more difficult cipher to crack, the Vigenère cipher.
     The first difficulty of the Vigenere cipher is that the length of the key is arbitrary and indicates the permutation
     of the text.
-    Our plaintext is `ddddd` and we encrypt it using the key  of length 3. It is easy to see how it works. The first
+    Our plaintext is "ddddd" and we encrypt it using the key  of length 3. It is easy to see how it works. The first
     letter of the plaintext is shifted  (shift of 0), the second shifted  (shift of 1 position) and the third one by
     (shift of 3 positions).
 
@@ -38,12 +39,12 @@ class VigenereCipher(AbstractCipher):
             return self.keyspace[(idx - shift_idx) % self.keyspace_size]
         return letter
 
-    def encrypt(self, plaintext: str) -> str:
+    def encrypt(self, plaintext: PlainText) -> CipherText:
         cleaned = self.clean_text(plaintext)
         ciphertext = list(enumerate(cleaned) | starmap(self._shift_letter))
         return ''.join(ciphertext)
 
-    def decrypt(self, ciphertext: str) -> str:
+    def decrypt(self, ciphertext: CipherText) -> PlainText:
         ciphertext = list(enumerate(ciphertext) | starmap(self._unshift_letter))  # type: ignore
         return ''.join(ciphertext)
 

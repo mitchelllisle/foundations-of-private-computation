@@ -2,6 +2,7 @@ from pipe import map
 
 from privcomp.ciphers.cipher import AbstractCipher
 from privcomp.text_utils import letter_to_int
+from privcomp.types import CipherText, PlainText
 
 
 class ShiftCipher(AbstractCipher):
@@ -43,12 +44,12 @@ class ShiftCipher(AbstractCipher):
             return self.keyspace[letter_idx - self.shift]
         return letter
 
-    def encrypt(self, plaintext: str) -> str:
+    def encrypt(self, plaintext: PlainText) -> CipherText:
         cleaned = self.clean_text(plaintext)
         ciphertext = list(cleaned | map(self._shift_letter))
         return ''.join(ciphertext)
 
-    def decrypt(self, ciphertext: str) -> str:
+    def decrypt(self, ciphertext: CipherText) -> PlainText:
         cleaned = self.clean_text(ciphertext)
         plaintext = list(cleaned | map(self._unshift_letter))
         return ''.join(plaintext)

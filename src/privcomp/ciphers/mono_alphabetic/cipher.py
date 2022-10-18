@@ -4,6 +4,7 @@ from pipe import map
 
 from privcomp.ciphers.cipher import AbstractCipher
 from privcomp.text_utils import letter_to_int
+from privcomp.types import CipherText, PlainText
 
 
 class MonoAlphabeticCipher(AbstractCipher):
@@ -25,11 +26,6 @@ class MonoAlphabeticCipher(AbstractCipher):
         cls.random.shuffle(keyspace)
         return ''.join(keyspace)
 
-    def _letter_validation(self, letter: str) -> str:
-        if letter.lower() not in f'{self.secret_key} ':
-            raise ValueError(f'letter can only be 1 character length and must be in alphabet. Problem letter: {letter}')
-        return letter.lower()
-
     def _shift_letter(self, letter: str) -> str:
         letter = self._letter_validation(letter)
         if letter != ' ':
@@ -43,10 +39,10 @@ class MonoAlphabeticCipher(AbstractCipher):
             return self.keyspace[self._secret_key_lookup[letter]]
         return letter
 
-    def encrypt(self, plaintext: str) -> str:
+    def encrypt(self, plaintext: PlainText) -> CipherText:
         ciphertext = list(plaintext.lower().strip().replace('\n', '') | map(self._shift_letter))
         return ''.join(ciphertext)
 
-    def decrypt(self, ciphertext: str) -> str:
+    def decrypt(self, ciphertext: CipherText) -> PlainText:
         plaintext = list(ciphertext.lower().strip().replace('\n', '') | map(self._unshift_letter))
         return ''.join(plaintext)
