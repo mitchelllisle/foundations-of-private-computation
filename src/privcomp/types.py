@@ -1,0 +1,2 @@
+CipherText = str
+PlainText = str

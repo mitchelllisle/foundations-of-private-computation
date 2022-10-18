@@ -1,6 +1,9 @@
+from random import SystemRandom
 from typing import List, Tuple
 
 from pipe import Pipe, filter, groupby, map, sort
+
+random = SystemRandom()
 
 
 @Pipe
@@ -17,3 +20,7 @@ def letter_count(text: str) -> List[Tuple[str, int]]:
         | map(lambda group: (group[0], len(list(group[1]))))
         | sort(lambda group: group[1], reverse=True)
     )
+
+
+def letter_to_int(letter: str) -> int:
+    return ord(letter) - 97
