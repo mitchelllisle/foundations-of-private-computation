@@ -2,7 +2,7 @@ from typing import Set
 
 from privcomp.ciphers.cipher import AbstractCipher
 from privcomp.text_utils import letter_to_int, starmap
-from privcomp.types import CipherText, PlainText
+from privcomp.typing import CipherText, PlainText
 
 
 class VigenereCipher(AbstractCipher):

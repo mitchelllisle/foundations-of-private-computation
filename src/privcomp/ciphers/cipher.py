@@ -3,7 +3,7 @@ import string
 from abc import ABC, abstractmethod
 from random import SystemRandom
 
-from privcomp.types import CipherText, PlainText
+from privcomp.typing import CipherText, PlainText
 
 
 class AbstractCipher(ABC):

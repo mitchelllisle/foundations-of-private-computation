@@ -1,6 +1,6 @@
 Name                                               Stmts   Miss  Cover
 ----------------------------------------------------------------------
-src/privcomp/__init__.py                              11      0   100%
+src/privcomp/__init__.py                              12      0   100%
 src/privcomp/chart_utils.py                           10      0   100%
 src/privcomp/ciphers/__init__.py                       0      0   100%
 src/privcomp/ciphers/cipher.py                        26      3    88%
@@ -14,8 +14,11 @@ src/privcomp/ciphers/shift/attack.py                  12      0   100%
 src/privcomp/ciphers/shift/cipher.py                  30      0   100%
 src/privcomp/ciphers/vigenere/__init__.py              0      0   100%
 src/privcomp/ciphers/vigenere/cipher.py               37      0   100%
+src/privcomp/crypto_utils.py                         177    148    16%
+src/privcomp/diffie_hellman/__init__.py                0      0   100%
+src/privcomp/diffie_hellman/key_exchange.py           28     14    50%
 src/privcomp/logger.py                                 4      4     0%
 src/privcomp/text_utils.py                            12      0   100%
-src/privcomp/types.py                                  2      0   100%
+src/privcomp/typing.py                                 6      0   100%
 ----------------------------------------------------------------------
-TOTAL                                                216     33    85%
+TOTAL                                                426    195    54%

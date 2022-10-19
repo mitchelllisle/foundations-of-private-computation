@@ -1,2 +1,0 @@
-CipherText = str
-PlainText = str
